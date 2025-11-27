@@ -1,4 +1,7 @@
 # Embeddings Visual Map  
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-000?style=for-the-badge)](https://rtfenter.github.io/Embeddings-Visual-Map/)
+
 A compact interactive map that shows how short texts relate to each other in meaning — demonstrating semantic similarity, clustering, and the geometric intuition behind embeddings, retrieval, and semantic search.
 
 This project is part of the **AI & ML UX Systems Series**, a set of UX-first prototypes built to demonstrate AI reasoning, model intuition, and ML-aware product design in a clean, recruiter-friendly way.
