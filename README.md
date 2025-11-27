@@ -53,11 +53,11 @@ Outliers separate naturally.
 
 <img width="2804" height="2022" alt="Screenshot 2025-11-26 at 19-07-44 Embeddings Visual Map" src="https://github.com/user-attachments/assets/868d395a-3c48-4bc1-be32-0ab11b9712f0" />
 
-
 ---
 
-## System Design
+## Embeddings Flow Diagram
 
+```
     [User Inputs: Text 1–6]
                  |
                  v
@@ -83,6 +83,7 @@ Outliers separate naturally.
      detailed pairwise comparison
 
 Meaning → vectors → geometry → UX.
+```
 
 ---
 
@@ -143,7 +144,6 @@ MVP is implemented and active.
 Runs entirely client-side — no backend required.
 
 ---
-
 ## Local Use
 
 1. Clone the repo  
