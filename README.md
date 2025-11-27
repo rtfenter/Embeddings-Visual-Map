@@ -86,24 +86,6 @@ Meaning → vectors → geometry → UX.
 
 ---
 
-## Example Inputs (Good for Demo)
-
-These produce clear clusters recruiters understand instantly:
-
-**Helpdesk cluster**  
-1. “Reset my password instructions”  
-2. “Troubleshooting login errors”
-
-**Finance cluster**  
-3. “Quarterly revenue increased 12%”  
-4. “Q3 financial results summary”
-
-**Food cluster**  
-5. “Healthy vegan pasta recipe”  
-6. “Quick vegetarian meals for weeknights”
-
----
-
 ## Why This Matters for AI PM Roles
 
 Embeddings inform:
