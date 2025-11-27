@@ -48,9 +48,8 @@ Outliers separate naturally.
 
 ## Demo Screenshot
 
-*(Placeholder image — updated after MVP.)*
+<img width="2804" height="2022" alt="Screenshot 2025-11-26 at 19-07-44 Embeddings Visual Map" src="https://github.com/user-attachments/assets/868d395a-3c48-4bc1-be32-0ab11b9712f0" />
 
-<img width="2400" alt="Embeddings Visual Map Screenshot" src="https://github.com/user-attachments/assets/embeddings-map-placeholder.png" />
 
 ---
 
@@ -155,7 +154,7 @@ Other prototypes:
 
 ## Status
 
-MVP implemented.  
+MVP is implemented and active.  
 Runs entirely client-side — no backend required.
 
 ---
