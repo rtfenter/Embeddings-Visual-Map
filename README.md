@@ -1,19 +1,140 @@
+# Embeddings Visual Map  
+A compact interactive map that shows how short texts relate to each other in meaning — demonstrating semantic similarity, clustering, and the geometric intuition behind embeddings, retrieval, and semantic search.
 
-A clean illustration of meaning → geometry → UX.
+This project is part of the **AI & ML UX Systems Series**, a set of UX-first prototypes built to demonstrate AI reasoning, model intuition, and ML-aware product design in a clean, recruiter-friendly way.
+
+The Embeddings Visual Map turns a complex ML concept — **“meaning as geometry”** — into a tiny, intuitive interface.
+
+---
+
+## Purpose
+
+Embeddings are the backbone of modern AI systems:
+
+- semantic search  
+- RAG context retrieval  
+- deduplication  
+- document similarity  
+- clustering  
+- recommendations  
+- meaning comparison  
+
+But embeddings are invisible. Interviewers often ask:
+
+- “Explain embeddings to a non-technical audience.”  
+- “How does semantic search actually work?”  
+- “Why does RAG rely on cosine similarity?”  
+
+This prototype makes the concept immediately understandable.
+
+You enter several texts → the system computes simple embedding-like vectors → the points arrange themselves on a 2D map.  
+Texts with similar meaning cluster together.  
+Outliers separate naturally.
+
+---
+
+## Features (MVP)
+
+- 3–6 text inputs  
+- Lightweight vectorization  
+- Cosine similarity matrix  
+- Force-directed 2D layout  
+- Color-coded points and labels  
+- Similarity matrix table  
+- Interpretation notes  
+- High-signal UX for interviews  
+
+---
+
+## Demo Screenshot
+
+*(Placeholder image — updated after MVP.)*
+
+<img width="2400" alt="Embeddings Visual Map Screenshot" src="https://github.com/user-attachments/assets/embeddings-map-placeholder.png" />
+
+---
+
+## System Design
+
+    [User Inputs: Text 1–6]
+                 |
+                 v
+        Lightweight Vectorizer
+        (bag-of-words → frequencies)
+                 |
+                 v
+        Cosine Similarity Matrix
+     (numerical distance between texts)
+                 |
+                 v
+        2D Force Layout Engine
+   closer = more similar, farther = less
+                 |
+                 v
+     [Interactive Embeddings Map]
+       • color-coded points
+       • labels
+       • emergent clusters
+                 |
+                 v
+         [Similarity Matrix]
+     detailed pairwise comparison
+
+Meaning → vectors → geometry → UX.
+
+---
+
+## Example Inputs (Good for Demo)
+
+These produce clear clusters recruiters understand instantly:
+
+**Helpdesk cluster**  
+1. “Reset my password instructions”  
+2. “Troubleshooting login errors”
+
+**Finance cluster**  
+3. “Quarterly revenue increased 12%”  
+4. “Q3 financial results summary”
+
+**Food cluster**  
+5. “Healthy vegan pasta recipe”  
+6. “Quick vegetarian meals for weeknights”
+
+---
+
+## Why This Matters for AI PM Roles
+
+Embeddings inform:
+
+- search ranking  
+- retrieval  
+- clustering  
+- deduplication  
+- semantic distance  
+- vector database behavior  
+
+This prototype demonstrates:
+
+- a clear mental model of embeddings  
+- ability to simplify deep ML concepts  
+- practical understanding of semantic geometry  
+- product instincts for interpretability  
+- knowledge of how retrieval systems work  
 
 ---
 
 ## Recruiter Value
 
-This prototype demonstrates:
+This prototype signals:
 
-- clear mental model of embeddings  
-- ability to explain abstract ML concepts visually  
-- understanding of semantic distance & RAG foundations  
-- product instincts for making ML interpretable  
-- ability to translate infrastructure into UX  
+- ML reasoning  
+- UX clarity  
+- conceptual translation skill  
+- understanding of meaning distance  
+- fluency in RAG fundamentals  
+- ability to visualize hidden AI systems  
 
-It’s small, elegant, and extremely high-signal.
+Small, elegant, high-impact.
 
 ---
 
@@ -34,8 +155,8 @@ Other prototypes:
 
 ## Status
 
-MVP is implemented and active.  
-Runs entirely client-side — no backend needed.
+MVP implemented.  
+Runs entirely client-side — no backend required.
 
 ---
 
@@ -43,4 +164,4 @@ Runs entirely client-side — no backend needed.
 
 1. Clone the repo  
 2. Open `index.html`  
-3. Everything runs client-side  
+3. Everything runs client-side
