@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Embeddings Visual Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1>Embeddings Visual Map</h1>
+      <p class="tagline">
+        Map how short texts relate to each other in meaning using a simple 2D similarity layout.
+      </p>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Left: Inputs -->
+    <section class="panel panel-input">
+      <div class="panel-header">
+        <h2>Text Inputs</h2>
+        <div class="panel-actions">
+          <button id="load-examples" class="btn btn-secondary">
+            Load Example Set
+          </button>
+        </div>
+      </div>
+
+      <p class="help-text">
+        Enter 3–6 short texts. The map will place them based on lexical similarity (a simple stand-in for embeddings).
+      </p>
+
+      <div class="inputs-grid">
+        <div class="input-group">
+          <label for="text-1">Text 1</label>
+          <textarea id="text-1" class="text-input" rows="2" spellcheck="false"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="text-2">Text 2</label>
+          <textarea id="text-2" class="text-input" rows="2" spellcheck="false"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="text-3">Text 3</label>
+          <textarea id="text-3" class="text-input" rows="2" spellcheck="false"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="text-4">Text 4</label>
+          <textarea id="text-4" class="text-input" rows="2" spellcheck="false"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="text-5">Text 5</label>
+          <textarea id="text-5" class="text-input" rows="2" spellcheck="false"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="text-6">Text 6</label>
+          <textarea id="text-6" class="text-input" rows="2" spellcheck="false"></textarea>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <button id="build-map" class="btn btn-primary">
+          Build Map
+        </button>
+        <span id="status" class="parse-status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <!-- Right: Map + Similarity -->
+    <section class="panel panel-map">
+      <div class="panel-header">
+        <h2>Embeddings-Style Map</h2>
+      </div>
+
+      <div id="summary" class="summary">
+        <div class="summary-badge summary-badge-idle">
+          No map yet. Add at least 3 texts and click <strong>Build Map</strong>.
+        </div>
+      </div>
+
+      <div class="map-wrapper">
+        <div class="map-header-row">
+          <span class="map-title">2D Similarity Layout</span>
+          <span class="map-hint">Closer points ≈ more similar meaning (by lexical overlap).</span>
+        </div>
+        <div class="map-inner" id="map-inner">
+          <!-- Points injected here -->
+          <div class="map-empty-state" id="map-empty-state">
+            Map preview will appear here.
+          </div>
+        </div>
+        <div class="map-legend">
+          <span class="legend-dot"></span>
+          <span class="legend-text">
+            Position is computed from pairwise similarity only — there is no “correct” orientation, just relative distance.
+          </span>
+        </div>
+      </div>
+
+      <div class="matrix-section">
+        <h3>Similarity Matrix</h3>
+        <p class="help-text">
+          Values are cosine similarity scores on simple bag-of-words vectors (0 = unrelated, 1 = identical).
+        </p>
+        <div class="matrix-scroll">
+          <table class="similarity-table" id="similarity-table">
+            <!-- Filled dynamically -->
+          </table>
+        </div>
+      </div>
+
+      <div class="comparison-notes">
+        <h3>Interpretation Notes</h3>
+        <p id="notes-text" class="comparison-text">
+          Once a map is generated, this section summarizes which texts are most similar, which are isolated, and how clusters emerge.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>
+      Part of the
+      <a href="https://github.com/rtfenter/AI-ML-UX-Systems-Series" target="_blank" rel="noreferrer">
+        AI &amp; ML UX Systems Series
+      </a>.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
