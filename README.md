@@ -51,7 +51,8 @@ Outliers separate naturally.
 
 ## Demo Screenshot
 
-<img width="2804" height="2022" alt="Screenshot 2025-11-26 at 19-07-44 Embeddings Visual Map" src="https://github.com/user-attachments/assets/868d395a-3c48-4bc1-be32-0ab11b9712f0" />
+<img width="2806" height="2022" alt="Screenshot 2025-11-28 at 15-31-21 Embeddings Visual Map" src="https://github.com/user-attachments/assets/278d0479-0773-40f2-a5f4-1ac1453f5594" />
+
 
 ---
 
