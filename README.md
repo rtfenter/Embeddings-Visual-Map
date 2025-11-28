@@ -37,6 +37,7 @@ Outliers separate naturally.
 ---
 
 ## Features (MVP)
+This prototype includes:
 
 - 3–6 text inputs  
 - Lightweight vectorization  
