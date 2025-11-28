@@ -7,6 +7,7 @@ const inputs = [
   document.getElementById("text-6")
 ];
 
+const exampleSelect = document.getElementById("example-select");
 const loadExamplesBtn = document.getElementById("load-examples");
 const buildMapBtn = document.getElementById("build-map");
 const statusEl = document.getElementById("status");
@@ -29,14 +30,39 @@ const STOPWORDS = new Set([
   "the","a","an","to","and","or","of","for","on","in","at","is","are","was","were","this","that","it","my","our","your","with","from","by","as","be","can","do","how","what","why","when","where","which","who","will","would","should","could","about","into","over","under"
 ]);
 
-const EXAMPLES = [
-  "How do I reset my password?",
-  "Steps to fix login issues.",
-  "Quarterly revenue increased 12% this year.",
-  "Financial results from the Q3 earnings call.",
-  "Healthy vegan pasta recipe.",
-  "Quick vegetarian meal ideas for weeknights."
-];
+// Three example sets for different scenarios
+const EXAMPLE_SETS = {
+  support: [
+    "How do I reset my password?",
+    "Steps to fix login issues.",
+    "How can I update my billing information?",
+    "Where can I see my previous invoices?",
+    "Your app keeps logging me out every hour.",
+    "I’m not receiving the verification email."
+  ],
+  product_vs_finance: [
+    "New dashboard lets teams track adoption by segment.",
+    "We shipped faster search and better filters for large workspaces.",
+    "Quarterly revenue increased 12% year-over-year.",
+    "Operating margin improved 3 points this quarter.",
+    "We’re rolling out a redesigned settings page for admins.",
+    "Cash flow from operations reached a new high this year."
+  ],
+  recipes: [
+    "Healthy vegan pasta recipe.",
+    "Quick vegetarian meal ideas for weeknights.",
+    "Slow-cooked beef stew with red wine.",
+    "10-minute avocado toast with chili flakes.",
+    "High-protein breakfast smoothie with oats.",
+    "Baked salmon with lemon and garlic."
+  ]
+};
+
+const EXAMPLE_LABELS = {
+  support: "Customer Support FAQs",
+  product_vs_finance: "Product vs Finance Updates",
+  recipes: "Recipes & Meal Ideas"
+};
 
 function setStatus(text) {
   statusEl.textContent = text || "";
@@ -292,7 +318,9 @@ function generateNotes(texts, simMatrix) {
 // Render points onto the map
 function renderMap(texts, positions) {
   mapInner.innerHTML = "";
-  mapEmpty && mapEmpty.remove();
+  if (mapEmpty && mapEmpty.parentNode) {
+    mapEmpty.parentNode.removeChild(mapEmpty);
+  }
 
   const n = texts.length;
 
@@ -317,14 +345,45 @@ function renderMap(texts, positions) {
   }
 }
 
+// Handle example selection change (optional messaging)
+exampleSelect.addEventListener("change", () => {
+  const key = exampleSelect.value;
+  if (!key) {
+    setStatus("");
+    summaryIdle("No map yet. Add 3–6 texts or select an example set, then click Build Map.");
+    return;
+  }
+  const label = EXAMPLE_LABELS[key] || "example set";
+  setStatus(`Selected: ${label}. Click “Load Set” to fill the inputs.`);
+  summaryIdle(`Selected "${label}". Click Load Set, then Build Map to see how they cluster.`);
+});
+
 // Load example set
 loadExamplesBtn.addEventListener("click", () => {
-  EXAMPLES.forEach((text, idx) => {
+  let key = exampleSelect.value;
+
+  // Default to first set if none chosen
+  if (!key) {
+    key = "support";
+    exampleSelect.value = "support";
+  }
+
+  const set = EXAMPLE_SETS[key];
+  if (!set) {
+    setStatus("Choose an example set first.");
+    summaryWarn("No example set chosen yet — pick one from the dropdown.");
+    return;
+  }
+
+  set.forEach((text, idx) => {
     if (inputs[idx]) {
       inputs[idx].value = text;
     }
   });
-  setStatus("Loaded example texts.");
+
+  const label = EXAMPLE_LABELS[key] || "example set";
+  setStatus(`Loaded example set: ${label}.`);
+  summaryIdle(`Example set "${label}" loaded. Click Build Map to see how the texts cluster.`);
 });
 
 // Build map
@@ -371,4 +430,4 @@ buildMapBtn.addEventListener("click", () => {
 });
 
 // Initial summary
-summaryIdle("No map yet. Add 3–6 texts and click Build Map to see how they cluster.");
+summaryIdle("No map yet. Add 3–6 texts or select an example set, then click Build Map to see how they cluster.");
