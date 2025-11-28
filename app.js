@@ -8,7 +8,6 @@ const inputs = [
 ];
 
 const exampleSelect = document.getElementById("example-select");
-const loadExamplesBtn = document.getElementById("load-examples");
 const buildMapBtn = document.getElementById("build-map");
 const statusEl = document.getElementById("status");
 const summaryEl = document.getElementById("summary");
@@ -345,33 +344,22 @@ function renderMap(texts, positions) {
   }
 }
 
-// Handle example selection change (optional messaging)
+// When the user selects an example, auto-load it into the inputs
 exampleSelect.addEventListener("change", () => {
   const key = exampleSelect.value;
+
   if (!key) {
     setStatus("");
-    summaryIdle("No map yet. Add 3–6 texts or select an example set, then click Build Map.");
+    summaryIdle("No map yet. Add 3–6 texts or select an example set, then click Build Map to see how they cluster.");
     return;
-  }
-  const label = EXAMPLE_LABELS[key] || "example set";
-  setStatus(`Selected: ${label}. Click “Load Set” to fill the inputs.`);
-  summaryIdle(`Selected "${label}". Click Load Set, then Build Map to see how they cluster.`);
-});
-
-// Load example set
-loadExamplesBtn.addEventListener("click", () => {
-  let key = exampleSelect.value;
-
-  // Default to first set if none chosen
-  if (!key) {
-    key = "support";
-    exampleSelect.value = "support";
   }
 
   const set = EXAMPLE_SETS[key];
+  const label = EXAMPLE_LABELS[key] || "example set";
+
   if (!set) {
-    setStatus("Choose an example set first.");
-    summaryWarn("No example set chosen yet — pick one from the dropdown.");
+    setStatus("Example set not found.");
+    summaryWarn("Something went wrong loading that example set.");
     return;
   }
 
@@ -381,8 +369,7 @@ loadExamplesBtn.addEventListener("click", () => {
     }
   });
 
-  const label = EXAMPLE_LABELS[key] || "example set";
-  setStatus(`Loaded example set: ${label}.`);
+  setStatus(`Loaded example set: ${label}. You can edit any text before building the map.`);
   summaryIdle(`Example set "${label}" loaded. Click Build Map to see how the texts cluster.`);
 });
 
