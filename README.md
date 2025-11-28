@@ -127,15 +127,7 @@ Small, elegant, high-impact.
 ## Part of the AI & ML UX Systems Series
 
 Main Hub:  
-https://github.com/rtfenter/AI-ML-UX-Systems-Series
-
-Other prototypes:
-
-- Minimal RAG Query Explorer *(coming)*  
-- Chat Model Behavior Sandbox  
-- Model Explainer Playground (XAI Lite) *(coming)*  
-- Prompt–Response Variation Explorer  
-- **Embeddings Visual Map** ← this repo  
+https://github.com/rtfenter/AI-ML-UX-Systems-Series 
 
 ---
 
